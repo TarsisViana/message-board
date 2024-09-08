@@ -17,6 +17,10 @@ const messages = [
   }
 ];
 
+export function addMessage(message) {
+  messages.push(message)
+}
+
 //inicial get request display the messages
 router.get('/', (req, res, next) => {
   res.render(
