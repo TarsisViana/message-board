@@ -3,6 +3,7 @@ import { Router } from 'express';
 
 const router = Router();
 
+//inicial messagesg
 const messages = [
   {
     text: "Hi there!",
