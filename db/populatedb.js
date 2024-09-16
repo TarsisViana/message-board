@@ -1,5 +1,9 @@
+import "dotenv/config";
 import pg from "pg";
 const { Client } = pg;
+
+const test =
+  "postgresql://tarsis:Qu4Os9NpYOcr4CHtFHSv8MxUV7f08xbg@dpg-crk2cet2ng1s73fnjkq0-a.frankfurt-postgres.render.com/message_board_3blw";
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
@@ -23,7 +27,7 @@ function newDate() {
 async function main() {
   console.log("seeding...");
   const client = new Client({
-    connectionString: `postgresql://${process.env.USER}:${process.env.USER_PASSWORD}@${process.env.HOST}:${process.env.DEFAULT_PORT}/${process.env.DATABASE}`,
+    connectionString: `postgresql://${process.env.USER}:${process.env.USER_PASSWORD}@${process.env.HOST}:${process.env.DEFAULT_PORT}/${process.env.DATABASE}?ssl=true`,
   });
   await client.connect();
   await client.query(SQL);
@@ -32,3 +36,4 @@ async function main() {
 }
 
 main();
+//`postgresql://${process.env.USER}:${process.env.USER_PASSWORD}@${process.env.HOST}:${process.env.DEFAULT_PORT}/${process.env.DATABASE}`
